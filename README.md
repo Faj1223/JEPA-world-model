@@ -1,5 +1,7 @@
 # World Models : de la prédiction à la planification dans un espace latent
 
+![Target tacking](Image/JEPA_WM_1.png)
+
 Implémentation progressive d'un world model au sens de LeCun (2022), sur une tâche contrôlée :
 une balle qui rebondit dans une boîte 2D. Le projet construit l'architecture brique par brique,
 en validant chaque étape avant d'ajouter la suivante.
@@ -25,7 +27,7 @@ environnement, puis de planifier « en imagination » avant d'agir.
 | `WM_step2.ipynb` | Ajouter les actions, planifier vers une cible | Fixé à la main | ✓ | ✓ |
 | `WM_step3.ipynb` | Apprendre la représentation à partir d'images (JEPA) | Appris | ✓ | ✓ |
 
-## En bref
+## En résumé
 
 - Un prédicteur de dynamique 24× plus précis que l'extrapolation linéaire au voisinage des rebonds.
 - Une planification MPC à parité avec un oracle disposant de la dynamique exacte (100 % de réussite).
@@ -43,6 +45,8 @@ environnement, puis de planifier « en imagination » avant d'agir.
 Un MLP prédit le déplacement de la balle à partir de ses 3 dernières positions. Les rebonds sont la
 seule non-linéarité du problème. La baseline est l'extrapolation linéaire (« la balle refait son
 dernier déplacement »), exacte loin des murs.
+
+![Bouncing ball](Image/JEPA_WM.png)
 
 **Protocole** : 500 trajectoires, séparation *par trajectoire* (80/10/10), prédiction du déplacement
 Δp plutôt que de la position, évaluation séparée loin des murs et autour des rebonds.
